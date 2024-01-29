@@ -4,11 +4,12 @@ import {
   registerUserWithEmailPassword,
   signIngWithGoogle,
 } from '../../firebase';
+import { clearNotesLogout } from '../journal';
 import { chekingCredentials, login, logout } from './';
 
 /**
- * Un thunk es un grupo de acciones sincronas o asincronas que se ejecutan
- * secuencialmente
+ * Un thunk es un grupo de acciones asincronas (que pueden contener acciones 
+ * sincronas) que se ejecutan secuencialmente
  */
 export const checkingAuthentication = (email, password) => {
   return async (dispatch) => {
@@ -71,7 +72,7 @@ export const startLoginWithEmailPassword = ({ email, password }) => {
 export const startLogout = () => {
   return async (dispatch) => {
     await logoutFirebase();
-
+    dispatch(clearNotesLogout())
     return dispatch(logout({}));
   };
 };

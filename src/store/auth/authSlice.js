@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 /**
  * Un slice es un objeto donde se almacena un grupo de reducers que tienen
- * una operatoria y un estado en comun
+ * una operatoria sincrona y un estado en comun
  */
 export const authSlice = createSlice({
   name: 'auth',

@@ -12,6 +12,11 @@ export const useForm = (initialForm = {}, formValidations = {}) => {
     createValidators();
   }, [formState]);
 
+  useEffect(() => {
+    setFormState(initialForm);
+  }, [initialForm])
+  
+
   /**
    * Cuando cambie el @var formState comprobamos si hay algun error de validacion,
    * Si lo hay, devolvemos true, en caso contrario, false

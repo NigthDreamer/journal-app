@@ -7,6 +7,11 @@ import { AuthLayout } from '../layout/AuthLayout';
 import { useForm } from '../../hooks';
 import { startGoogleSignIn, startLoginWithEmailPassword } from '../../store';
 
+const formData = {
+  email: '',
+  password: '',
+}
+
 export const LoginPage = () => {
 
   /**
@@ -23,10 +28,7 @@ export const LoginPage = () => {
    */
   const dispatch = useDispatch();
 
-  const { email, password, onInputChange } = useForm({
-    email: 'fernando@google.com',
-    password: '123456',
-  });
+  const { email, password, onInputChange } = useForm(formData);
 
   /**
    * Memoriza lo que devuelva el callback (un booleano en este caso) si la
