@@ -7,7 +7,12 @@ import Swal from 'sweetalert2';
 
 import { ImageGallery } from '../components';
 import { useForm } from './../../hooks/useForm';
-import { setActiveNote, startDeletingNote, startSaveNote, startUploadingFiles } from '../../store';
+import {
+  setActiveNote,
+  startDeletingNote,
+  startSaveNote,
+  startUploadingFiles,
+} from '../../store';
 
 export const NoteView = () => {
   const dispatch = useDispatch();
@@ -18,18 +23,21 @@ export const NoteView = () => {
   const dateString = useMemo(() => {
     const newDate = new Date(date);
     return newDate.toUTCString();
+     
   }, [date]);
 
   const fileInputRef = useRef();
 
   useEffect(() => {
     dispatch(setActiveNote(formState));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [formState]);
 
   useEffect(() => {
     if (messageSaved.length > 0) {
       Swal.fire('Nota actualizada', messageSaved, 'success');
     }
+     
   }, [messageSaved]);
 
   const onSaveNote = () => {
@@ -45,7 +53,7 @@ export const NoteView = () => {
 
   const onDelete = () => {
     dispatch(startDeletingNote());
-  }
+  };
 
   return (
     <Grid
@@ -114,18 +122,14 @@ export const NoteView = () => {
         />
       </Grid>
 
-      <Grid container justifyContent='end'>
-        <Button
-          onClick={onDelete}
-          sx={{mt: 2}}
-          color='error'
-        >
-          <DeleteOutline/>
+      <Grid container justifyContent="end">
+        <Button onClick={onDelete} sx={{ mt: 2 }} color="error">
+          <DeleteOutline />
           Borrar
         </Button>
       </Grid>
 
-      <ImageGallery images={note.imageUrls}/>
+      <ImageGallery images={note.imageUrls} />
     </Grid>
   );
 };

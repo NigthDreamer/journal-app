@@ -11,7 +11,7 @@ import { chekingCredentials, login, logout } from './';
  * Un thunk es un grupo de acciones asincronas (que pueden contener acciones 
  * sincronas) que se ejecutan secuencialmente
  */
-export const checkingAuthentication = (email, password) => {
+export const checkingAuthentication = () => {
   return async (dispatch) => {
     // Ejecuto la accion de checkingCredentials
     dispatch(chekingCredentials());
@@ -22,7 +22,7 @@ export const checkingAuthentication = (email, password) => {
  * Por convencion se le pone start para indicar que es el inicio de una tarea
  * asincrona
  */
-export const startGoogleSignIn = (email, password) => {
+export const startGoogleSignIn = () => {
   return async (dispatch) => {
     // Ejecuto la accion de checkingCredentials
     dispatch(chekingCredentials());

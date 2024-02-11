@@ -2,6 +2,7 @@ import { useSelector } from 'react-redux';
 import { Box, Drawer, Toolbar, Divider, Typography, List } from '@mui/material';
 import { SideBarItem } from './SideBarItem';
 
+// eslint-disable-next-line react/prop-types
 export const SideBar = ({ drawerWidth }) => {
   const { displayName } = useSelector((state) => state.auth);
   const { notes } = useSelector((state) => state.journal);

@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { ImageList, ImageListItem } from '@mui/material';
 
 export const ImageGallery = ({images}) => {

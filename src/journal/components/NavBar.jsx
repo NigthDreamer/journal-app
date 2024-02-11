@@ -3,6 +3,7 @@ import { AppBar, Toolbar, IconButton, Grid, Typography } from '@mui/material';
 import { LogoutOutlined, MenuOutlined } from '@mui/icons-material';
 import { startLogout } from '../../store/auth';
 
+// eslint-disable-next-line react/prop-types
 export const NavBar = ({ drawerWidth = 240 }) => {
 
   const dispatch = useDispatch();

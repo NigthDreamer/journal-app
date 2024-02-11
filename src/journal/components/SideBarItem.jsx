@@ -1,5 +1,5 @@
 import { useMemo } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { TurnedInNot } from '@mui/icons-material';
 import {
   ListItem,
@@ -10,6 +10,7 @@ import {
 } from '@mui/material';
 import { setActiveNote } from '../../store';
 
+// eslint-disable-next-line react/prop-types
 export const SideBarItem = ({ title = '', body, id, date, imageUrls = [] }) => {
 
   const dispatch = useDispatch();

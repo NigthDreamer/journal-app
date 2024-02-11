@@ -9,8 +9,6 @@ export const startNewNote = () => {
     dispatch(savingNewNote());
     const { uid } = getState().auth;
 
-    console.log(uid);
-
     const newNote = {
       title: '',
       body: '',
@@ -78,7 +76,7 @@ export const startDeletingNote = () => {
     const { active: note } = getState().journal;
 
     const docRef = doc(FirebaseDB, `${ uid }/journal/notes/${ note.id }`);
-    const res = await deleteDoc(docRef);
+    await deleteDoc(docRef);
 
     dispatch(deleteNoteById(note.id));
   }

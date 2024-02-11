@@ -7,6 +7,7 @@ import '@fontsource/roboto/700.css';
 
 import { purpleTheme } from './purpleTheme';
 
+// eslint-disable-next-line react/prop-types
 export const AppTheme = ({ children }) => {
   return (
     <ThemeProvider theme={purpleTheme}>

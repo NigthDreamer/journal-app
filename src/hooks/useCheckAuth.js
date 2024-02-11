@@ -16,6 +16,7 @@ export const useCheckAuth = () => {
       dispatch(login({ uid, email, displayName, photoURL }));
       dispatch(startLoadingNotes());
     });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return {

@@ -10,17 +10,16 @@ import { startGoogleSignIn, startLoginWithEmailPassword } from '../../store';
 const formData = {
   email: '',
   password: '',
-}
+};
 
 export const LoginPage = () => {
-
   /**
-   * Este hook devuelve el estado completo de la aplicacion. Si 
+   * Este hook devuelve el estado completo de la aplicacion. Si
    * seleccionamos un slice en concreto (auth por ejemplo) devolvera
-   * el objeto con el estado de dicho slice del cual podemos 
+   * el objeto con el estado de dicho slice del cual podemos
    * desestructurar sus propiedades
    */
-  const { status, errorMessage } = useSelector( state => state.auth );
+  const { status, errorMessage } = useSelector((state) => state.auth);
 
   /**
    * Este hook sirve para ejecutar una de las acciones exportadas
@@ -34,7 +33,7 @@ export const LoginPage = () => {
    * Memoriza lo que devuelva el callback (un booleano en este caso) si la
    * dependencia cambia de valor (si el valor de status cambia)
    */
-  const isAuthenticating = useMemo( () => status === 'checking', [status]);
+  const isAuthenticating = useMemo(() => status === 'checking', [status]);
 
   const onSubmit = (event) => {
     event.preventDefault();
@@ -50,15 +49,20 @@ export const LoginPage = () => {
   useEffect(() => {
     // Si el usuario esta autenticado, le dejo entrar en el dashboard
     if (status === 'authenticated') {
-      navigate("/", {
-        replace: true
+      navigate('/', {
+        replace: true,
       });
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [status]);
 
   return (
     <AuthLayout title="Login">
-      <form onSubmit={onSubmit} className='animate__animated animate__fadeIn animate__faster'>
+      <form
+        aria-label="submit-form"
+        onSubmit={onSubmit}
+        className="animate__animated animate__fadeIn animate__faster"
+      >
         <Grid container>
           {/* Con sx accedemos al tema definido en el theme provider */}
           <Grid item xs={12} sx={{ mt: 2 }}>
@@ -83,22 +87,36 @@ export const LoginPage = () => {
               autoComplete="current-password"
               fullWidth
               name="password"
+              inputProps={{
+                'data-testid': 'password'
+              }}
               value={password}
               onChange={onInputChange}
             />
           </Grid>
 
           <Grid container spacing={2} sx={{ mb: 2, mt: 1 }}>
-            <Grid item xs={12} display={!!errorMessage ? '' : 'none'}>
+            <Grid item xs={12} display={errorMessage ? '' : 'none'}>
               <Alert severity="error">{errorMessage}</Alert>
             </Grid>
             <Grid item xs={12} sm={6}>
-              <Button type="submit" variant="contained" fullWidth disabled={isAuthenticating}>
+              <Button
+                type="submit"
+                variant="contained"
+                fullWidth
+                disabled={isAuthenticating}
+              >
                 Login
               </Button>
             </Grid>
             <Grid item xs={12} sm={6}>
-              <Button variant="contained" fullWidth disabled={isAuthenticating} onClick={onGoogleSigning}>
+              <Button
+                aria-label="google-btn"
+                variant="contained"
+                fullWidth
+                disabled={isAuthenticating}
+                onClick={onGoogleSigning}
+              >
                 <Google />
                 <Typography sx={{ ml: 1 }}>Google</Typography>
               </Button>
