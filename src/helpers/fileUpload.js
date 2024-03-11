@@ -1,9 +1,15 @@
+import { getEnvironments } from "./getEnvironments";
+
 export const fileUpload = async (file) => {
   // if (!file) throw new Error('No tenemos ningun archivo a subir');
 
+  const {
+    VITE_CLOUDINARYBUCKET
+  } = getEnvironments();
+
   if (!file) return null;
 
-  const cloudUrl = 'https://api.cloudinary.com/v1_1/duqniwia3/upload';
+  const cloudUrl = VITE_CLOUDINARYBUCKET;
 
   const formData = new FormData();
   formData.append('upload_preset', 'react-journal');
