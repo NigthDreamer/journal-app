@@ -20,7 +20,8 @@ jest.mock('../../../src/store/auth/thunks', () => ({
   },
 }));
 
-jest.mock('react-redux', () => ({
+//* Guardo la referencia para no cargar este mock por cada test
+const mockUseDispatch = jest.mock('react-redux', () => ({
   ...jest.requireActual('react-redux'),
   /**
    * Ahora el use dispatch devuelve una funcion que recibe por parametro otra
@@ -41,7 +42,11 @@ const store = configureStore({
 });
 
 describe('Pruebas en el <Loginpage />', () => {
-  beforeEach(() => jest.clearAllMocks());
+  beforeEach(() => {
+    jest.clearAllMocks();
+    //* Vuelvo a seter el mock del dispatch con la referencia anterior
+    jest.mock('react-redux', () => mockUseDispatch);
+  });
 
   test('Debe de mostrar el componente correctamente', () => {
     render(

@@ -1,9 +1,15 @@
 # Journal App
 
-Tercera aplicacion realizada en el curso de React de Fernando Herrera.
+Una aplicación en la que puedes registrarte con google, crear notas y subir imágenes
 
-En esta aplicacion se implementa:
+## Implementaciones
 
-- Redux
-- Firebase
-- Google Signing
+En esta aplicación se realizan las siguientes implementaciones:
+
+* Redux
+* Firebase
+* Google Signing
+
+## Demostración
+
+https://journal-app-nd.netlify.app/
