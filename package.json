@@ -23,7 +23,7 @@
     "react-dom": "^18.2.0",
     "react-redux": "^9.1.0",
     "react-router-dom": "^6.21.1",
-    "sweetalert2": "^11.10.4",
+    "sweetalert2": "11.6.13",
     "whatwg-fetch": "^3.6.20"
   },
   "devDependencies": {
